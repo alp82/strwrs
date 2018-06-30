@@ -12,6 +12,7 @@ const SearchField = ({ value, isLoading, error, onSearch, ...rest }) => (
     loading={isLoading}
     error={error}
     onChange={_.debounce(onSearch, 500, { leading: true })}
+    fluid
     {...rest}
   />
 )

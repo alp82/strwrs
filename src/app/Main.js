@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Grid, Loader } from 'semantic-ui-react'
+import { Grid, Loader, Segment } from 'semantic-ui-react'
 
 import connectState from './connectState'
 import FilmList from '../modules/list/FilmList'
@@ -31,9 +31,11 @@ class Main extends Component {
     return (
       <Box>
         <Title>Hi!</Title>
-        <SearchForm />
+        <Segment inverted color='grey'>
+          <SearchForm />
+        </Segment>
         <Loader active={initializing} />
-        <Grid columns='two' divided>
+        <Grid columns="two" divided>
           <Grid.Row>
             <Grid.Column>
               <FilmList films={films} />
