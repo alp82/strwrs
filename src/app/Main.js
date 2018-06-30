@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Loader } from 'semantic-ui-react'
+import { Grid, Loader } from 'semantic-ui-react'
 
 import connectState from './connectState'
 import FilmList from '../modules/list/FilmList'
@@ -33,8 +33,16 @@ class Main extends Component {
         <Title>Hi!</Title>
         <SearchForm />
         <Loader active={initializing} />
-        <FilmList films={films} />
-        {selection && <FilmDetails film={selection} />}
+        <Grid columns='two' divided>
+          <Grid.Row>
+            <Grid.Column>
+              <FilmList films={films} />
+            </Grid.Column>
+            <Grid.Column>
+              {selection && <FilmDetails film={selection} />}
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </Box>
     )
   }
