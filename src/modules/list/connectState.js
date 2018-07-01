@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
 
 import { Creators } from '../../store/actions'
-import { getSelection, getPoster } from '../../store/selectors'
+import { getSearchResults, getSelection, getPoster } from '../../store/selectors'
 
 const mapStateToProps = state => ({
+  films: getSearchResults(state),
   selection: getSelection(state),
   getPoster: id => getPoster(state, id),
 })

@@ -7,12 +7,12 @@ import FilmList from '../list/FilmList'
 import FilmDetails from '../details/FilmDetails'
 import SearchForm from '../search/SearchForm'
 import Box from '../ui/Box'
+import NoSelection from '../ui/NoSelection'
 
 class Main extends Component {
   static propTypes = {
     initializing: PropTypes.bool.isRequired,
     selection: PropTypes.object,
-    films: PropTypes.array.isRequired,
     dispatchInitRequest: PropTypes.func.isRequired,
   }
 
@@ -25,7 +25,7 @@ class Main extends Component {
   }
 
   render() {
-    const { initializing, films, selection } = this.props
+    const { initializing, selection } = this.props
 
     return (
       <Box>
@@ -37,11 +37,10 @@ class Main extends Component {
           <Grid columns="two" divided>
             <Grid.Row>
               <Grid.Column>
-                <FilmList films={films} />
+                <FilmList />
               </Grid.Column>
               <Grid.Column>
-                {selection && <FilmDetails film={selection} />}
-                {!selection && <p>No movie selected</p>}
+                {selection ? <FilmDetails /> : <NoSelection />}
               </Grid.Column>
             </Grid.Row>
           </Grid>

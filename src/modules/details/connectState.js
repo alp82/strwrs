@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
 
-import { getPoster } from '../../store/selectors'
+import { getSelection, getPoster } from '../../store/selectors'
 
 const mapStateToProps = state => ({
+  film: getSelection(state),
   getPoster: id => getPoster(state, id),
 })
 

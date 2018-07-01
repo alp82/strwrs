@@ -18,8 +18,7 @@ const FilmList = ({ films, selection, getPoster, dispatchSelect }) => (
       keys={films.map(film => film.id)}
       from={{ opacity: 0.5, height: 0, marginBottom: 0 }}
       leave={{ opacity: 0, height: 0, marginBottom: 0, pointerEvents: 'none' }}
-      enter={{ opacity: 1, height: 52, marginBottom: 32 }}
-    >
+      enter={{ opacity: 1, height: 52, marginBottom: 32 }}>
       {films.map(film => styles => {
         const isSelected = selection && film.id === selection.id
         const active = isSelected ? 'true' : null
@@ -29,7 +28,7 @@ const FilmList = ({ films, selection, getPoster, dispatchSelect }) => (
             style={styles}
             active={active}
             onClick={() => !isSelected && dispatchSelect(film)}>
-            <Item.Image size="mini" src={getPoster(film.id)}/>
+            <Item.Image size="mini" src={getPoster(film.id)} />
 
             <Item.Content verticalAlign="middle">
               <Item.Header>{film.fields.title}</Item.Header>
