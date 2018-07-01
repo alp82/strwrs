@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Form, Dropdown, Input, Message } from 'semantic-ui-react'
+import { Form, Dropdown, Input } from 'semantic-ui-react'
 import styled from 'react-emotion'
-import _ from 'lodash'
 
 import connectState from './connectState'
 
@@ -35,30 +34,32 @@ const sortOptions = [
   },
 ]
 
-const SearchForm = ({ search, dispatchSearchRequest }) => {
-  const { isLoading, error, query } = search
+const SearchForm = ({ search, dispatchSort, dispatchSearch }) => {
+  const { sort, query } = search
+
+  const handleSortChange = (e, { value }) => {
+    dispatchSort(value)
+  }
 
   const handleSearchChange = (e, { value }) => {
-    dispatchSearchRequest(value)
+    dispatchSearch(value)
   }
 
   return (
-    <CompactForm size="large" error={Boolean(error)}>
-      {error && <Message error header="Search Error" content={error} />}
+    <CompactForm size="large">
       <SortDropdown
         placeholder="Sort by..."
         header="Sort by"
         selection
         options={sortOptions}
-        defaultValue={sortOptions[0].value}
+        defaultValue={sort || sortOptions[0].value}
+        onChange={handleSortChange}
       />
       <SearchInput
         placeholder="Search..."
         icon="search"
         value={query}
-        loading={isLoading}
-        error={Boolean(error)}
-        onChange={_.debounce(handleSearchChange, 500, { leading: true })}
+        onChange={handleSearchChange}
         fluid
       />
     </CompactForm>
@@ -67,7 +68,8 @@ const SearchForm = ({ search, dispatchSearchRequest }) => {
 
 SearchForm.propTypes = {
   search: PropTypes.object.isRequired,
-  dispatchSearchRequest: PropTypes.func.isRequired,
+  dispatchSort: PropTypes.func.isRequired,
+  dispatchSearch: PropTypes.func.isRequired,
 }
 
 export default connectState(SearchForm)

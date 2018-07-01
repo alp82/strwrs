@@ -7,9 +7,9 @@ export const { Types, Creators } = createActions(
     initFailure: ['error'],
     savePosters: ['posters'],
     select: ['film'],
-    searchRequest: ['query'],
-    searchSuccess: ['results'],
-    searchFailure: ['error'],
+    sort: ['by'],
+    search: ['query'],
+    setResults: ['results'],
   },
   {}
 )

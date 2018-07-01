@@ -47,4 +47,35 @@ const loadPosters = action$ =>
     })
   )
 
-export default combineEpics(loadFilms, loadPosters)
+const search = (action$, state$) =>
+  action$.pipe(
+    ofType(Types.INIT_SUCCESS, Types.SORT, Types.SEARCH),
+    mergeMap(() => {
+      const { data, search } = state$.value;
+      const { sort, query } = search;
+      const { films } = data;
+      const results = Object.keys(films)
+        .filter(id => {
+          const title = films[id].fields.title.toLowerCase()
+          return title.indexOf(query.toLowerCase()) !== -1
+        })
+        .sort((a, b) => {
+          const f1 = films[a];
+          const f2 = films[b];
+          switch(sort) {
+            case 'year':
+              return f1.fields.release_date > f2.fields.release_date
+            case 'episode':
+            default:
+              return f1.fields.episode_id > f2.fields.episode_id
+          }
+        })
+      return of(Creators.setResults(results));
+    })
+  )
+
+export default combineEpics(
+  loadFilms,
+  loadPosters,
+  search,
+)

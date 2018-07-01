@@ -2,21 +2,20 @@ import { connect } from 'react-redux'
 
 import { Creators } from '../../store/actions'
 import {
+  getSearchSort,
   getSearchQuery,
-  getSearchIsLoading,
-  getSearchError,
 } from '../../store/selectors'
 
 const mapStateToProps = state => ({
   search: {
+    sort: getSearchSort(state),
     query: getSearchQuery(state),
-    isLoading: getSearchIsLoading(state),
-    error: getSearchError(state),
   },
 })
 
 const mapDispatchToProps = dispatch => ({
-  dispatchSearchRequest: query => dispatch(Creators.searchRequest(query)),
+  dispatchSort: by => dispatch(Creators.sort(by)),
+  dispatchSearch: query => dispatch(Creators.search(query)),
 })
 
 export default Component =>

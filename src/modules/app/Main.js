@@ -3,17 +3,16 @@ import PropTypes from 'prop-types'
 import { Grid, Loader, Segment } from 'semantic-ui-react'
 
 import connectState from './connectState'
-import FilmList from '../modules/list/FilmList'
-import FilmDetails from '../modules/details/FilmDetails'
-import SearchForm from '../modules/search/SearchForm'
+import FilmList from '../list/FilmList'
+import FilmDetails from '../details/FilmDetails'
+import SearchForm from '../search/SearchForm'
 import Box from '../ui/Box'
-import Title from '../ui/Title'
 
 class Main extends Component {
   static propTypes = {
     initializing: PropTypes.bool.isRequired,
-    films: PropTypes.object.isRequired,
     selection: PropTypes.object,
+    films: PropTypes.array.isRequired,
     dispatchInitRequest: PropTypes.func.isRequired,
   }
 
@@ -30,7 +29,6 @@ class Main extends Component {
 
     return (
       <Box>
-        <Title>Hi!</Title>
         <Segment inverted color="grey">
           <SearchForm />
         </Segment>
@@ -43,6 +41,7 @@ class Main extends Component {
               </Grid.Column>
               <Grid.Column>
                 {selection && <FilmDetails film={selection} />}
+                {!selection && <p>No movie selected</p>}
               </Grid.Column>
             </Grid.Row>
           </Grid>

@@ -4,7 +4,7 @@ import { createStore, compose, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { createEpicMiddleware } from 'redux-observable'
 
-import Main from './app/Main'
+import Main from './modules/app/Main'
 import rootEpic from './store/epics'
 import rootReducer from './store/reducers'
 import './theme/default'

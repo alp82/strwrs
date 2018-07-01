@@ -13,13 +13,12 @@ const SelectableItem = styled(Item)`
 
 const FilmList = ({ films, selection, getPoster, dispatchSelect }) => (
   <Item.Group link relaxed="very">
-    {Object.keys(films).map(id => {
-      const film = films[id]
+    {films.map(film => {
       const isSelected = selection && film.id === selection.id
       const active = isSelected ? 'true' : null
       return (
         <SelectableItem
-          key={id}
+          key={film.id}
           active={active}
           onClick={() => !isSelected && dispatchSelect(film)}>
           <Item.Image size="mini" src={getPoster(film.id)} />
@@ -37,7 +36,7 @@ const FilmList = ({ films, selection, getPoster, dispatchSelect }) => (
 )
 
 FilmList.propTypes = {
-  films: PropTypes.object.isRequired,
+  films: PropTypes.array.isRequired,
   selection: PropTypes.object,
   getPoster: PropTypes.func.isRequired,
   dispatchSelect: PropTypes.func.isRequired,

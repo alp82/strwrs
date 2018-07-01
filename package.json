@@ -28,7 +28,6 @@
   "dependencies": {
     "date-fns": "^1.29.0",
     "emotion": "^9.2.3",
-    "lodash": "^4.17.10",
     "prop-types": "^15.6.2",
     "react": "^16.x",
     "react-dom": "^16.4.1",
@@ -36,12 +35,9 @@
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "reduxsauce": "^1.0.0",
-    "reselect": "^3.0.1",
     "rx": "^4.1.0",
     "semantic-ui-css": "^2.3.2",
-    "semantic-ui-react": "^0.81.1",
-    "src": "^1.1.2",
-    "ui": "^0.2.4"
+    "semantic-ui-react": "^0.81.1"
   },
   "devDependencies": {
     "autoprefixer": "^8.6.3",

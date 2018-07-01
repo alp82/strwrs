@@ -15,6 +15,7 @@ const films = createReducer(
   {},
   {
     [Types.INIT_SUCCESS]: (state, { films }) =>
+      // convert array-like structure to objects with film id's as key
       films.reduce(
         (acc, film) => ({
           ...acc,
@@ -47,30 +48,20 @@ const selection = createReducer(false, {
 
 // search reducers
 
-const isLoading = createReducer(false, {
-  [Types.SEARCH_REQUEST]: () => true,
-  [Types.SEARCH_SUCCESS]: () => false,
-  [Types.SEARCH_FAILURE]: () => false,
-})
-
-const error = createReducer('', {
-  [Types.SEARCH_REQUEST]: () => null,
-  [Types.SEARCH_SUCCESS]: () => null,
-  [Types.SEARCH_FAILURE]: (state, { error }) => error,
+const sort = createReducer('episode', {
+  [Types.SORT]: (state, { by }) => by,
 })
 
 const query = createReducer('', {
-  [Types.SEARCH_REQUEST]: (state, { query }) => query,
+  [Types.SEARCH]: (state, { query }) => query,
 })
 
 const results = createReducer([], {
-  [Types.SEARCH_SUCCESS]: (state, { results }) => results,
-  [Types.SEARCH_FAILURE]: () => [],
+  [Types.SET_RESULTS]: (state, { results }) => results,
 })
 
 const search = combineReducers({
-  isLoading,
-  error,
+  sort,
   query,
   results,
 })

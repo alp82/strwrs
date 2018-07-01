@@ -8,7 +8,6 @@ export const getSelection = state =>
   state.selection ? state.data.films[state.selection] : null
 
 // search selectors
-export const getSearchIsLoading = state => state.search.isLoading
-export const getSearchError = state => state.search.error
+export const getSearchSort = state => state.search.sort
 export const getSearchQuery = state => state.search.query
-export const getSearchResults = state => state.search.results
+export const getSearchResults = state => state.search.results.map(id => getFilms(state)[id])
