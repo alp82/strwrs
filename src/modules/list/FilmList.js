@@ -1,28 +1,41 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Image, List } from 'semantic-ui-react'
+import { Item } from 'semantic-ui-react'
+import styled from 'react-emotion'
 import { format } from 'date-fns'
 
 import connectState from './connectState'
 
+const SelectableItem = styled(Item)`
+  background: ${props => props.active ? 'rgba(0,0,0,.05) !important' : 'none'};
+`
+
 const FilmList = ({ films, selection, getPoster, dispatchSelect }) => (
-  <List selection relaxed="very">
+  <Item.Group link relaxed="very">
     {Object.keys(films).map(id => {
       const film = films[id]
-      const isSelected = selection && film.id === selection.id;
+      const isSelected = selection && film.id === selection.id
+      const active = isSelected ? 'true' : null;
       return (
-        <List.Item key={id} active={isSelected} onClick={() => !isSelected && dispatchSelect(film)}>
-          <Image avatar src={getPoster(film.id)} />
-          <List.Content>
-            <List.Header>{film.fields.title}</List.Header>
-            <List.Description>
+        <SelectableItem
+          key={id}
+          active={active}
+          onClick={() => !isSelected && dispatchSelect(film)}
+        >
+          <Item.Image size="mini" src={getPoster(film.id)} />
+
+          <Item.Content verticalAlign="middle">
+            <Item.Header>
+              {film.fields.title}
+            </Item.Header>
+            <Item.Extra>
               released {format(film.fields.release_date, 'MMM Do YYYY')}
-            </List.Description>
-          </List.Content>
-        </List.Item>
+            </Item.Extra>
+          </Item.Content>
+        </SelectableItem>
       )
     })}
-  </List>
+  </Item.Group>
 )
 
 FilmList.propTypes = {

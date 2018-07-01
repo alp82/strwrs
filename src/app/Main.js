@@ -31,20 +31,22 @@ class Main extends Component {
     return (
       <Box>
         <Title>Hi!</Title>
-        <Segment inverted color='grey'>
+        <Segment inverted color="grey">
           <SearchForm />
         </Segment>
-        <Loader active={initializing} />
-        <Grid columns="two" divided>
-          <Grid.Row>
-            <Grid.Column>
-              <FilmList films={films} />
-            </Grid.Column>
-            <Grid.Column>
-              {selection && <FilmDetails film={selection} />}
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <Segment basic>
+          <Loader active={initializing} />
+          <Grid columns="two" divided>
+            <Grid.Row>
+              <Grid.Column>
+                <FilmList films={films} />
+              </Grid.Column>
+              <Grid.Column>
+                {selection && <FilmDetails film={selection} />}
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
       </Box>
     )
   }
