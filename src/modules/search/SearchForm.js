@@ -35,7 +35,6 @@ const sortOptions = [
   },
 ]
 
-
 const SearchForm = ({ search, dispatchSearchRequest }) => {
   const { isLoading, error, query } = search
 
@@ -47,7 +46,7 @@ const SearchForm = ({ search, dispatchSearchRequest }) => {
     <CompactForm size="large" error={Boolean(error)}>
       {error && <Message error header="Search Error" content={error} />}
       <SortDropdown
-        placeholder='Sort by...'
+        placeholder="Sort by..."
         header="Sort by"
         selection
         options={sortOptions}

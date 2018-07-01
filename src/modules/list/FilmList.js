@@ -7,7 +7,8 @@ import { format } from 'date-fns'
 import connectState from './connectState'
 
 const SelectableItem = styled(Item)`
-  background: ${props => props.active ? 'rgba(0,0,0,.05) !important' : 'none'};
+  background: ${props =>
+    props.active ? 'rgba(0,0,0,.05) !important' : 'none'};
 `
 
 const FilmList = ({ films, selection, getPoster, dispatchSelect }) => (
@@ -15,19 +16,16 @@ const FilmList = ({ films, selection, getPoster, dispatchSelect }) => (
     {Object.keys(films).map(id => {
       const film = films[id]
       const isSelected = selection && film.id === selection.id
-      const active = isSelected ? 'true' : null;
+      const active = isSelected ? 'true' : null
       return (
         <SelectableItem
           key={id}
           active={active}
-          onClick={() => !isSelected && dispatchSelect(film)}
-        >
+          onClick={() => !isSelected && dispatchSelect(film)}>
           <Item.Image size="mini" src={getPoster(film.id)} />
 
           <Item.Content verticalAlign="middle">
-            <Item.Header>
-              {film.fields.title}
-            </Item.Header>
+            <Item.Header>{film.fields.title}</Item.Header>
             <Item.Extra>
               released {format(film.fields.release_date, 'MMM Do YYYY')}
             </Item.Extra>

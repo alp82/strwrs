@@ -20,10 +20,10 @@ const FilmDetails = ({ film, getPoster }) => (
       <Item.Content>
         <Item.Header>{film.fields.title}</Item.Header>
         <Item.Meta>
-          <Icon name='film' /> Produced by {film.fields.producer}
+          <Icon name="film" /> Produced by {film.fields.producer}
         </Item.Meta>
         <Item.Meta>
-          <Icon name='announcement' /> Directed by {film.fields.director}
+          <Icon name="announcement" /> Directed by {film.fields.director}
         </Item.Meta>
         <Item.Description>
           <FilmDescription>{film.fields.opening_crawl}</FilmDescription>
