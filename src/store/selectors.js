@@ -10,4 +10,5 @@ export const getSelection = state =>
 // search selectors
 export const getSearchSort = state => state.search.sort
 export const getSearchQuery = state => state.search.query
-export const getSearchResults = state => state.search.results.map(id => getFilms(state)[id])
+export const getSearchResults = state =>
+  state.search.results.map(id => getFilms(state)[id])

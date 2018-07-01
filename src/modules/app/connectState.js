@@ -1,7 +1,11 @@
 import { connect } from 'react-redux'
 
 import { Creators } from '../../store/actions'
-import { getInitializing, getSelection, getSearchResults } from '../../store/selectors'
+import {
+  getInitializing,
+  getSelection,
+  getSearchResults,
+} from '../../store/selectors'
 
 const mapStateToProps = state => ({
   initializing: getInitializing(state),

@@ -33,6 +33,7 @@
     "react-dom": "^16.4.1",
     "react-emotion": "^9.2.3",
     "react-redux": "^5.0.7",
+    "react-spring": "^5.3.18",
     "redux": "^4.0.0",
     "reduxsauce": "^1.0.0",
     "rx": "^4.1.0",

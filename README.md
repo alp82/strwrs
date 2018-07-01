@@ -24,6 +24,9 @@ This is a client only app.
 * React Semantic UI
 * Emotion 
 
+## Animation
+* react-spring
+
 ## Utility
 * date-fns
 
